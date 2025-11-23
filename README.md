@@ -38,11 +38,44 @@ project/
 
 ## 🚀 Installation
 
-### Prérequis
+### Option 1 : Docker (Recommandé) 🐳
+
+#### Prérequis
+- Docker Desktop installé ([Télécharger](https://www.docker.com/products/docker-desktop))
+- Docker Compose
+
+#### Démarrage rapide
+
+```powershell
+# Démarrer l'application
+.\docker.ps1 up
+
+# Ou directement avec docker-compose
+docker-compose up -d
+```
+
+L'API sera accessible sur : `http://localhost:5000`  
+Documentation : `http://localhost:5000/apidocs`
+
+**Commandes utiles :**
+```powershell
+.\docker.ps1 logs      # Voir les logs
+.\docker.ps1 restart   # Redémarrer
+.\docker.ps1 down      # Arrêter
+.\docker.ps1 shell     # Accéder au conteneur
+```
+
+📖 **[Guide complet Docker](README.Docker.md)**
+
+---
+
+### Option 2 : Installation locale
+
+#### Prérequis
 - Python 3.8+
 - pip
 
-### Étapes d'installation
+#### Étapes d'installation
 
 1. **Cloner le projet**
 ```bash
@@ -77,6 +110,8 @@ pip install -r requirements.txt
 5. **Lancer l'application**
 ```bash
 python app.py
+# Ou avec le script PowerShell
+.\start.ps1
 ```
 
 L'API sera accessible sur : `http://localhost:5000`
@@ -179,13 +214,85 @@ user_id: "uuid-de-l-utilisateur"
 
 ## 🔐 Authentification
 
-L'API utilise JWT (JSON Web Tokens) pour l'authentification.
+L'API utilise JWT (JSON Web Tokens) pour l'authentification avec support des access et refresh tokens.
 
-1. **Obtenir un token** : Utilisez l'endpoint `/users/verify-users-creds`
-2. **Utiliser le token** : Ajoutez le header suivant à vos requêtes :
+### Endpoints d'authentification
+
+#### 1. **Login** - `/auth/login` (POST)
+Authentifie un utilisateur et retourne les tokens.
+
+```bash
+curl -X POST http://localhost:5000/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email": "user@example.com", "password": "password123"}'
 ```
-Authorization: Bearer <votre-token>
+
+**Réponse :**
+```json
+{
+  "success": true,
+  "data": {
+    "access_token": "eyJhbGci...",
+    "refresh_token": "eyJhbGci...",
+    "token_type": "Bearer",
+    "expires_in": 3600,
+    "user": { /* infos utilisateur */ }
+  }
+}
 ```
+
+#### 2. **Refresh Token** - `/auth/refresh` (POST)
+Renouvelle l'access token avec le refresh token.
+
+```bash
+curl -X POST http://localhost:5000/auth/refresh \
+  -H "Content-Type: application/json" \
+  -d '{"refresh_token": "votre_refresh_token"}'
+```
+
+#### 3. **Utilisateur courant** - `/auth/me` (GET) 🆕
+Récupère les informations de l'utilisateur authentifié.
+
+```bash
+curl -X GET http://localhost:5000/auth/me \
+  -H "Authorization: Bearer votre_access_token"
+```
+
+**Réponse :**
+```json
+{
+  "success": true,
+  "message": "Utilisateur recupere avec succes",
+  "data": {
+    "id": "uuid",
+    "first_name": "Jean",
+    "last_name": "Dupont",
+    "email": "user@example.com",
+    "phone_number": "+33612345678",
+    "birth_date": "1990-01-15",
+    "photo_url": null,
+    "created_at": "2025-11-23T...",
+    "updated_at": "2025-11-23T..."
+  }
+}
+```
+
+### Utilisation des tokens
+
+1. **Obtenir un token** : Utilisez l'endpoint `/auth/login`
+2. **Utiliser le token** : Ajoutez le header suivant à vos requêtes protégées :
+```
+Authorization: Bearer <votre-access-token>
+```
+3. **Renouveler le token** : Quand l'access token expire (60 min), utilisez `/auth/refresh`
+4. **Vérifier l'utilisateur** : Utilisez `/auth/me` pour obtenir les infos de l'utilisateur courant
+
+### Durée de vie des tokens
+
+- **Access Token** : 60 minutes
+- **Refresh Token** : 7 jours
+
+📖 **Documentation complète** : [ENDPOINT_ME.md](ENDPOINT_ME.md)
 
 ## 📊 Modèles de données
 

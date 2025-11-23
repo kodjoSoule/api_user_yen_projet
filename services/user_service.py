@@ -3,9 +3,9 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from models.user_model import UserModel, LoginModel
 from repositories.user_repository import UserRepository
-from utils.jwt_utils import generate_token
+from utils.jwt_utils import generate_tokens, refresh_access_token
 from dto.user import CreateUserRequest, UpdateUserRequest, UserResponse, UserListResponse
-from dto.auth import LoginRequest, LoginResponse
+from dto.auth import LoginRequest, LoginResponse, RefreshTokenRequest, RefreshTokenResponse
 
 
 class UserService:
@@ -162,14 +162,38 @@ class UserService:
         user.last_login = datetime.utcnow().isoformat()
         self.repository.update(user.user_id, user)
 
-        # Génère un token JWT
-        token = generate_token(user.user_id, user.email)
+        # Génère les tokens JWT (access + refresh)
+        access_token, refresh_token = generate_tokens(user.user_id, user.email)
 
         # Crée la réponse
         user_response = UserResponse.from_model(user)
-        login_response = LoginResponse(token=token, user=user_response)
+        login_response = LoginResponse(
+            access_token=access_token,
+            refresh_token=refresh_token,
+            user=user_response
+        )
 
         return True, "Connexion réussie", login_response
+
+    def refresh_token(self, request_dto: RefreshTokenRequest) -> tuple[bool, str, Optional[RefreshTokenResponse]]:
+        """
+        Rafraîchit un access token à partir d'un refresh token
+        Returns: (success, message, refresh_response)
+        """
+        # Validation du DTO
+        is_valid, error_message = request_dto.validate()
+        if not is_valid:
+            return False, error_message, None
+
+        # Génère un nouveau access token
+        new_access_token = refresh_access_token(request_dto.refresh_token)
+
+        if not new_access_token:
+            return False, "Refresh token invalide ou expiré", None
+
+        # Crée la réponse
+        refresh_response = RefreshTokenResponse(access_token=new_access_token)
+        return True, "Token rafraîchi avec succès", refresh_response
 
     def update_profile_photo(self, user_id: str, photo_url: str) -> tuple[bool, str]:
         """

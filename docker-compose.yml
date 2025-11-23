@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  flask-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flask_users_api
+    ports:
+      - "5000:5000"
+    volumes:
+      # Monte le dossier data pour persister les données
+      - ./data:/app/data
+      # Monte le dossier uploads pour persister les fichiers uploadés
+      - ./uploads:/app/uploads
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=production
+      - SECRET_KEY=${SECRET_KEY:-dev-secret-key-change-in-production}
+      - JWT_EXPIRES_IN_MINUTES=60
+    restart: unless-stopped
+    networks:
+      - flask-network
+
+networks:
+  flask-network:
+    driver: bridge

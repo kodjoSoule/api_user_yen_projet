@@ -111,3 +111,22 @@ class RegisterRequest:
         if not self.address or not self.address.strip():
             return False, "L'adresse est requise"
         return True, None
+
+
+@dataclass
+class RefreshTokenRequest:
+    """DTO pour la requête de rafraîchissement de token"""
+    refresh_token: str
+
+    @staticmethod
+    def from_dict(data: dict) -> 'RefreshTokenRequest':
+        """Crée un DTO depuis un dictionnaire"""
+        return RefreshTokenRequest(
+            refresh_token=data.get('refresh_token')
+        )
+
+    def validate(self) -> tuple[bool, Optional[str]]:
+        """Valide les données du DTO"""
+        if not self.refresh_token or not self.refresh_token.strip():
+            return False, "Le refresh token est requis"
+        return True, None
