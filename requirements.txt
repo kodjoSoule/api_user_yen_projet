@@ -1,0 +1,14 @@
+# Framework Flask
+flask==3.0.2
+flask-cors==4.0.0
+flasgger==0.9.7.1
+
+# Authentification
+PyJWT==2.8.0
+
+# Utilitaires
+Werkzeug==3.0.1
+python-dotenv==1.0.1
+
+# Tests (optionnel)
+requests==2.31.0

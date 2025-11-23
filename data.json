@@ -1,0 +1,15 @@
+{
+  "address": "Dakar, Sénégal",
+  "birth_date": "2005-07-12",
+  "country": "Sénégal",
+  "email": "souleymane.kodjo@example.com",
+  "first_name": "Souleymane",
+  "last_name": "Kodjo",
+  "is_active": true,
+  "is_completed": true,
+  "is_verified": false,
+  "password": "MonMotDePasse123!",
+  "phone_number": "+221771234567",
+  "photo_url": "https://example.com/photos/souleymane.jpg",
+  "user_type": "PARTICULIER"
+}
