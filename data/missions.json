@@ -1,0 +1,262 @@
+[
+  {
+    "id": "088d45d1-0829-440b-b3da-9284bd6b9918",
+    "title": "Nettoyage appartement 3 pieces",
+    "description": "Nettoyage complet d'un appartement de 3 pieces avec cuisine et salle de bain. Produits fournis.",
+    "type_code": "CLEANING",
+    "location": {
+      "country": "Guinee",
+      "city": "Conakry",
+      "neighborhood": "Ratoma - Rue KA 045, Ratoma Centre"
+    },
+    "budget": 150000.0,
+    "publisher_id": "client-fatoumata-bah",
+    "status": "ASSIGNED",
+    "work_days": [
+      {
+        "day": "2024-10-02",
+        "start_time": "09:00:00",
+        "end_time": "12:00:00"
+      }
+    ],
+    "created_at": "2025-11-23T15:01:04.549082",
+    "updated_at": null
+  },
+  {
+    "id": "2d0a7b6b-a390-4abb-815f-d0fc39fca737",
+    "title": "Livraison urgente documents",
+    "description": "Livraison de documents importants entre Kaloum et Matoto. A recuperer avant 14h.",
+    "type_code": "DELIVERY",
+    "location": {
+      "country": "Guinee",
+      "city": "Conakry",
+      "neighborhood": "Kaloum - Avenue de la Republique"
+    },
+    "budget": 25000.0,
+    "publisher_id": "client-alpha-conde",
+    "status": "COMPLETED",
+    "work_days": [
+      {
+        "day": "2024-10-02",
+        "start_time": "13:00:00",
+        "end_time": "14:00:00"
+      }
+    ],
+    "created_at": "2025-11-23T15:01:04.551560",
+    "updated_at": "2025-11-23T17:47:26.233183",
+    "worker_id": "e58119b7-a28e-446c-9cd9-bf90a9733ba0"
+  },
+  {
+    "id": "1eae2f6c-5403-4622-8239-d15180f75d25",
+    "title": "Reparation installation electrique",
+    "description": "Probleme de disjoncteur qui saute frequemment. Diagnostic et reparation necessaires.",
+    "type_code": "HANDYMAN",
+    "location": {
+      "country": "Guinee",
+      "city": "Conakry",
+      "neighborhood": "Matam - Quartier Matam, Rue MA 123"
+    },
+    "budget": 85000.0,
+    "publisher_id": "client-fatoumata-bah",
+    "status": "PUBLISHED",
+    "work_days": [
+      {
+        "day": "2024-10-03",
+        "start_time": "10:00:00",
+        "end_time": "12:00:00"
+      }
+    ],
+    "created_at": "2025-11-23T15:01:04.554143",
+    "updated_at": null
+  },
+  {
+    "id": "7a8c5b2e-dc5d-458b-9a38-819333a95614",
+    "title": "Entretien jardin et taille arbustes",
+    "description": "Taille des arbustes, arrosage et entretien general du jardin. Terrain de 200m2.",
+    "type_code": "GARDENING",
+    "location": {
+      "country": "Guinee",
+      "city": "Conakry",
+      "neighborhood": "Dixinn - Cite Chemin de Fer"
+    },
+    "budget": 65000.0,
+    "publisher_id": "client-mamadou-diallo",
+    "status": "PUBLISHED",
+    "work_days": [
+      {
+        "day": "2024-10-04",
+        "start_time": "08:00:00",
+        "end_time": "12:00:00"
+      }
+    ],
+    "created_at": "2025-11-23T15:01:04.556955",
+    "updated_at": null
+  },
+  {
+    "id": "12703a51-cd27-437a-9e95-c425f759a65c",
+    "title": "Cours de mathematiques niveau lycee",
+    "description": "Cours particuliers de mathematiques pour preparation au BAC. Programme de terminale scientifique.",
+    "type_code": "TUTORING",
+    "location": {
+      "country": "Guinee",
+      "city": "Conakry",
+      "neighborhood": "Kaloum - Centre-ville"
+    },
+    "budget": 50000.0,
+    "publisher_id": "client-alpha-conde",
+    "status": "ASSIGNED",
+    "work_days": [
+      {
+        "day": "2024-10-05",
+        "start_time": "15:00:00",
+        "end_time": "17:00:00"
+      },
+      {
+        "day": "2024-10-07",
+        "start_time": "15:00:00",
+        "end_time": "17:00:00"
+      }
+    ],
+    "created_at": "2025-11-23T15:01:04.559506",
+    "updated_at": "2025-11-23T17:47:21.883417",
+    "worker_id": "e58119b7-a28e-446c-9cd9-bf90a9733ba0"
+  },
+  {
+    "id": "55388f62-bf00-475a-9aaa-15ebe4af2533",
+    "title": "Reparation plomberie salle de bain",
+    "description": "Fuite au niveau du lavabo et remplacement du robinet. Intervention rapide necessaire.",
+    "type_code": "HANDYMAN",
+    "location": {
+      "country": "Guinee",
+      "city": "Conakry",
+      "neighborhood": "Ratoma - Hamdallaye"
+    },
+    "budget": 75000.0,
+    "publisher_id": "client-fatoumata-bah",
+    "status": "PUBLISHED",
+    "work_days": [
+      {
+        "day": "2024-10-03",
+        "start_time": "14:00:00",
+        "end_time": "16:00:00"
+      }
+    ],
+    "created_at": "2025-11-23T15:01:04.562448",
+    "updated_at": null
+  },
+  {
+    "id": "37ab08d7-feaf-4bfe-862e-f947ca925b09",
+    "title": "Nettoyage",
+    "description": "Nettoyage complet d'un appartement de 3 pieces.",
+    "type_code": "CLEANING",
+    "location": {
+      "country": "Guinee",
+      "city": "Conakry",
+      "neighborhood": "Ratoma"
+    },
+    "budget": 150000.0,
+    "publisher_id": "user-1",
+    "status": "ASSIGNED",
+    "work_days": [
+      {
+        "day": "2025-09-28",
+        "start_time": "09:00:00",
+        "end_time": "11:00:00"
+      }
+    ],
+    "created_at": "2025-11-23T15:08:08.254938",
+    "updated_at": null
+  },
+  {
+    "id": "25553b1e-6be1-4825-9c03-fa0fcd581e12",
+    "title": "Livraison",
+    "description": "Livraison de colis a domicile.",
+    "type_code": "DELIVERY",
+    "location": {
+      "country": "Guinee",
+      "city": "Matoto",
+      "neighborhood": "Kipe"
+    },
+    "budget": 120000.0,
+    "publisher_id": "user-2",
+    "status": "COMPLETED",
+    "work_days": [
+      {
+        "day": "2025-09-18",
+        "start_time": "14:00:00",
+        "end_time": "15:00:00"
+      }
+    ],
+    "created_at": "2025-11-23T15:08:08.260765",
+    "updated_at": null
+  },
+  {
+    "id": "c23710cb-ab2a-42ae-828a-f64c811985a0",
+    "title": "Jardinage",
+    "description": "Plantation de fleurs et entretien du potager.",
+    "type_code": "GARDENING",
+    "location": {
+      "country": "Guinee",
+      "city": "Dixinn",
+      "neighborhood": "Landreah"
+    },
+    "budget": 100000.0,
+    "publisher_id": "user-3",
+    "status": "COMPLETED",
+    "work_days": [
+      {
+        "day": "2025-09-20",
+        "start_time": "08:00:00",
+        "end_time": "10:30:00"
+      }
+    ],
+    "created_at": "2025-11-23T15:08:08.265738",
+    "updated_at": null
+  },
+  {
+    "id": "f13bd766-c385-46c5-b4ed-ee48760e236d",
+    "title": "Informatique",
+    "description": "Depannage et maintenance d'ordinateurs.",
+    "type_code": "OTHER",
+    "location": {
+      "country": "Guinee",
+      "city": "Kaloum",
+      "neighborhood": "Centre-ville"
+    },
+    "budget": 200000.0,
+    "publisher_id": "user-4",
+    "status": "COMPLETED",
+    "work_days": [
+      {
+        "day": "2025-09-22",
+        "start_time": "10:00:00",
+        "end_time": "12:00:00"
+      }
+    ],
+    "created_at": "2025-11-23T15:08:08.271571",
+    "updated_at": null
+  },
+  {
+    "id": "5eb5fea3-8a36-4ff0-b282-0090b9005dfe",
+    "title": "Menage",
+    "description": "Nettoyage bureaux administratifs.",
+    "type_code": "CLEANING",
+    "location": {
+      "country": "Guinee",
+      "city": "Conakry",
+      "neighborhood": "Kaloum"
+    },
+    "budget": 80000.0,
+    "publisher_id": "user-5",
+    "status": "COMPLETED",
+    "work_days": [
+      {
+        "day": "2025-09-15",
+        "start_time": "09:00:00",
+        "end_time": "10:30:00"
+      }
+    ],
+    "created_at": "2025-11-23T15:08:08.276193",
+    "updated_at": null
+  }
+]

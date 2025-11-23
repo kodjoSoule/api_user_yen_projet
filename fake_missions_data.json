@@ -1,0 +1,204 @@
+{
+  "description": "Données de missions fictives converties du format TypeScript",
+  "source": "fakeMissions array from frontend",
+  "total_missions": 5,
+  "missions": [
+    {
+      "id": 1,
+      "type": "Nettoyage",
+      "title": "Nettoyage",
+      "description": "Nettoyage complet d'un appartement de 3 pieces.",
+      "type_code": "CLEANING",
+      "location": {
+        "country": "Guinee",
+        "ville": "Conakry",
+        "quartier": "Ratoma",
+        "city": "Conakry",
+        "neighborhood": "Ratoma"
+      },
+      "tarif": 150000,
+      "budget": 150000,
+      "currency": "GNF",
+      "duree": 2,
+      "date": "2025-09-28",
+      "publisher_id": "user-1",
+      "statut": "en_cours",
+      "status": "ASSIGNED",
+      "photos": [
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+      ],
+      "work_days": [
+        {
+          "day": "2025-09-28",
+          "start_time": "09:00:00",
+          "end_time": "11:00:00"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "Livraison",
+      "title": "Livraison",
+      "description": "Livraison de colis a domicile.",
+      "type_code": "DELIVERY",
+      "location": {
+        "country": "Guinee",
+        "ville": "Matoto",
+        "quartier": "Kipe",
+        "city": "Matoto",
+        "neighborhood": "Kipe"
+      },
+      "tarif": 120000,
+      "budget": 120000,
+      "currency": "GNF",
+      "duree": 1,
+      "date": "2025-09-18",
+      "publisher_id": "user-2",
+      "statut": "terminee",
+      "status": "COMPLETED",
+      "photos": [
+        "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+      ],
+      "work_days": [
+        {
+          "day": "2025-09-18",
+          "start_time": "14:00:00",
+          "end_time": "15:00:00"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "Jardinage",
+      "title": "Jardinage",
+      "description": "Plantation de fleurs et entretien du potager.",
+      "type_code": "GARDENING",
+      "location": {
+        "country": "Guinee",
+        "ville": "Dixinn",
+        "quartier": "Landreah",
+        "city": "Dixinn",
+        "neighborhood": "Landreah"
+      },
+      "tarif": 100000,
+      "budget": 100000,
+      "currency": "GNF",
+      "duree": 2.5,
+      "date": "2025-09-20",
+      "publisher_id": "user-3",
+      "statut": "terminee",
+      "status": "COMPLETED",
+      "photos": [
+        "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=400&q=80"
+      ],
+      "work_days": [
+        {
+          "day": "2025-09-20",
+          "start_time": "08:00:00",
+          "end_time": "10:30:00"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "Informatique",
+      "title": "Informatique",
+      "description": "Depannage et maintenance d'ordinateurs.",
+      "type_code": "OTHER",
+      "location": {
+        "country": "Guinee",
+        "ville": "Kaloum",
+        "quartier": "Centre-ville",
+        "city": "Kaloum",
+        "neighborhood": "Centre-ville"
+      },
+      "tarif": 200000,
+      "budget": 200000,
+      "currency": "GNF",
+      "duree": 2,
+      "date": "2025-09-22",
+      "publisher_id": "user-4",
+      "statut": "terminee",
+      "status": "COMPLETED",
+      "photos": [
+        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80"
+      ],
+      "work_days": [
+        {
+          "day": "2025-09-22",
+          "start_time": "10:00:00",
+          "end_time": "12:00:00"
+        }
+      ],
+      "metadata": {
+        "specialization": "Informatique"
+      }
+    },
+    {
+      "id": 5,
+      "type": "Menage",
+      "title": "Menage",
+      "description": "Nettoyage bureaux administratifs.",
+      "type_code": "CLEANING",
+      "location": {
+        "country": "Guinee",
+        "ville": "Conakry",
+        "quartier": "Kaloum",
+        "city": "Conakry",
+        "neighborhood": "Kaloum"
+      },
+      "tarif": 80000,
+      "budget": 80000,
+      "currency": "GNF",
+      "duree": 1.5,
+      "date": "2025-09-15",
+      "publisher_id": "user-5",
+      "statut": "terminee",
+      "status": "COMPLETED",
+      "photos": [
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+      ],
+      "work_days": [
+        {
+          "day": "2025-09-15",
+          "start_time": "09:00:00",
+          "end_time": "10:30:00"
+        }
+      ]
+    }
+  ],
+  "statistics": {
+    "by_type": {
+      "CLEANING": 2,
+      "DELIVERY": 1,
+      "GARDENING": 1,
+      "OTHER": 1
+    },
+    "by_status": {
+      "COMPLETED": 4,
+      "ASSIGNED": 1
+    },
+    "by_statut_frontend": {
+      "terminee": 4,
+      "en_cours": 1
+    },
+    "total_budget": 650000,
+    "average_budget": 130000,
+    "average_duration": 1.8
+  },
+  "mapping": {
+    "status": {
+      "en_cours": "ASSIGNED",
+      "terminee": "COMPLETED",
+      "disponible": "PUBLISHED",
+      "annulee": "CANCELLED"
+    },
+    "types": {
+      "Nettoyage": "CLEANING",
+      "Livraison": "DELIVERY",
+      "Jardinage": "GARDENING",
+      "Informatique": "OTHER",
+      "Menage": "CLEANING"
+    }
+  }
+}

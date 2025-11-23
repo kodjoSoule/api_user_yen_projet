@@ -3,6 +3,7 @@ import os
 # Chemins de base
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_FILE = os.path.join(BASE_DIR, "data", "users.json")
+MISSIONS_DATA_FILE = os.path.join(BASE_DIR, "data", "missions.json")
 UPLOAD_FOLDER = os.path.join(BASE_DIR, "uploads")
 
 # Crée les dossiers nécessaires

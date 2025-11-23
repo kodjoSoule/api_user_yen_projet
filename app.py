@@ -3,9 +3,12 @@ from flask_cors import CORS
 from flasgger import Swagger
 from controllers.user_controller import user_bp, inject as inject_user
 from controllers.auth_controller import auth_bp, inject as inject_auth
+from controllers.mission_controller import mission_bp, inject as inject_mission
 from repositories.user_repository import UserRepository
+from repositories.mission_repository import MissionRepository
 from services.user_service import UserService
-from config.settings import SWAGGER_INFO, UPLOAD_FOLDER
+from services.mission_service import MissionService
+from config.settings import SWAGGER_INFO, UPLOAD_FOLDER, MISSIONS_DATA_FILE
 
 app = Flask(__name__)
 CORS(app)
@@ -41,14 +44,26 @@ swagger_config = {
 swagger = Swagger(app, template=swagger_template, config=swagger_config)
 
 # Injection de dépendances
-repo = UserRepository()
-service = UserService(repo)
-inject_user(service)
-inject_auth(service)
+user_repo = UserRepository()
+user_service = UserService(user_repo)
+inject_user(user_service)
+inject_auth(user_service)
+
+mission_repo = MissionRepository(MISSIONS_DATA_FILE)
+mission_service = MissionService(mission_repo)
+inject_mission(mission_service)
 
 # Enregistrement des blueprints
 app.register_blueprint(user_bp, url_prefix="/users")
 app.register_blueprint(auth_bp, url_prefix="/auth")
+
+# Enregistrer le blueprint missions avec deux préfixes pour compatibilité
+app.register_blueprint(mission_bp, url_prefix="/api/missions")
+
+# Créer un blueprint alias pour /missions (sans /api)
+from controllers.mission_controller import create_mission_blueprint_alias
+mission_alias_bp = create_mission_blueprint_alias(mission_service)
+app.register_blueprint(mission_alias_bp, url_prefix="/missions")
 
 
 # Route pour servir les fichiers uploadés
@@ -62,8 +77,13 @@ def uploaded_file(filename):
 def index():
     """Page d'accueil de l'API"""
     return {
-        "message": "Users Microservice API",
+        "message": "EQOS Microservices API",
         "version": "0.1.0",
+        "services": {
+            "users": "/users",
+            "auth": "/auth",
+            "missions": "/api/missions"
+        },
         "documentation": "/docs/"
     }
 
