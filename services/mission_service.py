@@ -117,6 +117,7 @@ class MissionService:
 
         for mission in missions:
             mission_type = self._get_mission_type(mission.type_code)
+            worker_id = getattr(mission, 'worker_id', None)
             display_dto = MissionDisplayDto(
                 id=mission.id,
                 title=mission.title,
@@ -126,7 +127,8 @@ class MissionService:
                 budget=str(mission.budget),
                 publisher_id=mission.publisher_id,
                 status=mission.status,
-                work_days=mission.work_days
+                work_days=mission.work_days,
+                worker_id=worker_id
             )
             display_dtos.append(display_dto)
 
@@ -140,6 +142,7 @@ class MissionService:
             return None
 
         mission_type = self._get_mission_type(mission.type_code)
+        worker_id = getattr(mission, 'worker_id', None)
         return MissionDisplayDto(
             id=mission.id,
             title=mission.title,
@@ -149,7 +152,8 @@ class MissionService:
             budget=str(mission.budget),
             publisher_id=mission.publisher_id,
             status=mission.status,
-            work_days=mission.work_days
+            work_days=mission.work_days,
+            worker_id=worker_id
         )
 
     def get_missions_by_filters(self, filters_data: dict) -> List[MissionDisplayDto]:
@@ -160,6 +164,7 @@ class MissionService:
         display_dtos = []
         for mission in missions:
             mission_type = self._get_mission_type(mission.type_code)
+            worker_id = getattr(mission, 'worker_id', None)
             display_dto = MissionDisplayDto(
                 id=mission.id,
                 title=mission.title,
@@ -169,7 +174,8 @@ class MissionService:
                 budget=str(mission.budget),
                 publisher_id=mission.publisher_id,
                 status=mission.status,
-                work_days=mission.work_days
+                work_days=mission.work_days,
+                worker_id=worker_id
             )
             display_dtos.append(display_dto)
 

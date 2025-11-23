@@ -58,7 +58,7 @@
     },
     "budget": 85000.0,
     "publisher_id": "client-fatoumata-bah",
-    "status": "PUBLISHED",
+    "status": "ASSIGNED",
     "work_days": [
       {
         "day": "2024-10-03",
@@ -67,7 +67,8 @@
       }
     ],
     "created_at": "2025-11-23T15:01:04.554143",
-    "updated_at": null
+    "updated_at": "2025-11-23T18:00:45.183073",
+    "worker_id": "e58119b7-a28e-446c-9cd9-bf90a9733ba0"
   },
   {
     "id": "7a8c5b2e-dc5d-458b-9a38-819333a95614",
@@ -81,7 +82,7 @@
     },
     "budget": 65000.0,
     "publisher_id": "client-mamadou-diallo",
-    "status": "PUBLISHED",
+    "status": "ASSIGNED",
     "work_days": [
       {
         "day": "2024-10-04",
@@ -90,7 +91,8 @@
       }
     ],
     "created_at": "2025-11-23T15:01:04.556955",
-    "updated_at": null
+    "updated_at": "2025-11-23T18:04:33.870597",
+    "worker_id": "e58119b7-a28e-446c-9cd9-bf90a9733ba0"
   },
   {
     "id": "12703a51-cd27-437a-9e95-c425f759a65c",
@@ -133,7 +135,7 @@
     },
     "budget": 75000.0,
     "publisher_id": "client-fatoumata-bah",
-    "status": "PUBLISHED",
+    "status": "ASSIGNED",
     "work_days": [
       {
         "day": "2024-10-03",
@@ -142,7 +144,8 @@
       }
     ],
     "created_at": "2025-11-23T15:01:04.562448",
-    "updated_at": null
+    "updated_at": "2025-11-23T18:05:20.940772",
+    "worker_id": "e58119b7-a28e-446c-9cd9-bf90a9733ba0"
   },
   {
     "id": "37ab08d7-feaf-4bfe-862e-f947ca925b09",

@@ -344,6 +344,91 @@ def publish_mission(mission_id):
         return jsonify(response.to_dict()), 500
 
 
+@mission_bp.route("/me", methods=["GET"])
+@token_required
+def get_my_missions():
+    """Recupere toutes les missions de l'utilisateur connecte (creees + acceptees)
+    ---
+    tags:
+      - EQOS : Missions
+    parameters:
+      - in: header
+        name: Authorization
+        required: true
+        type: string
+        description: Bearer token JWT
+    responses:
+      200:
+        description: Missions de l'utilisateur recuperees avec succes
+        schema:
+          type: object
+          properties:
+            success:
+              type: boolean
+            message:
+              type: string
+            data:
+              type: object
+              properties:
+                created_missions:
+                  type: array
+                  description: Missions creees par l'utilisateur
+                  items:
+                    type: object
+                accepted_missions:
+                  type: array
+                  description: Missions acceptees par l'utilisateur
+                  items:
+                    type: object
+                total_created:
+                  type: integer
+                total_accepted:
+                  type: integer
+                total:
+                  type: integer
+      401:
+        description: Non autorise
+      500:
+        description: Erreur serveur
+    """
+    try:
+        # Recuperer l'utilisateur courant depuis le token
+        current_user_id = request.current_user.get('user_id')
+
+        # Recuperer toutes les missions
+        all_missions = _service.get_all_missions()
+
+        # Filtrer les missions creees par l'utilisateur
+        created_missions = [m for m in all_missions if m.publisher_id == current_user_id]
+
+        # Filtrer les missions acceptees par l'utilisateur
+        accepted_missions = [m for m in all_missions if hasattr(m, 'worker_id') and m.worker_id == current_user_id]
+
+        # Convertir en dictionnaires
+        created_missions_data = [m.to_dict() for m in created_missions]
+        accepted_missions_data = [m.to_dict() for m in accepted_missions]
+
+        # Preparer la reponse
+        data = {
+            "created_missions": created_missions_data,
+            "accepted_missions": accepted_missions_data,
+            "total_created": len(created_missions_data),
+            "total_accepted": len(accepted_missions_data),
+            "total": len(created_missions_data) + len(accepted_missions_data)
+        }
+
+        response = ApiResponse(
+            success=True,
+            message=f"Missions recuperees: {data['total_created']} creee(s), {data['total_accepted']} acceptee(s)",
+            data=data
+        )
+        return jsonify(response.to_dict()), 200
+
+    except Exception as e:
+        response = ApiResponse(success=False, message=f"Erreur serveur: {str(e)}")
+        return jsonify(response.to_dict()), 500
+
+
 @mission_bp.route("/<mission_id>/accept", methods=["POST"])
 @token_required
 def accept_mission(mission_id):
@@ -530,6 +615,46 @@ def create_mission_blueprint_alias(service: MissionService):
             )
 
         return jsonify(response.to_dict()), 200
+
+    @alias_bp.route("/me", methods=["GET"])
+    @token_required
+    def get_my_missions_alias():
+        """Alias pour GET /missions/me - Recupere les missions de l'utilisateur connecte"""
+        try:
+            current_user_id = request.current_user.get('user_id')
+
+            # Recuperer toutes les missions
+            all_missions = service.get_all_missions()
+
+            # Filtrer les missions creees par l'utilisateur
+            created_missions = [m for m in all_missions if m.publisher_id == current_user_id]
+
+            # Filtrer les missions acceptees par l'utilisateur
+            accepted_missions = [m for m in all_missions if hasattr(m, 'worker_id') and m.worker_id == current_user_id]
+
+            # Convertir en dictionnaires
+            created_missions_data = [m.to_dict() for m in created_missions]
+            accepted_missions_data = [m.to_dict() for m in accepted_missions]
+
+            # Preparer la reponse
+            data = {
+                "created_missions": created_missions_data,
+                "accepted_missions": accepted_missions_data,
+                "total_created": len(created_missions_data),
+                "total_accepted": len(accepted_missions_data),
+                "total": len(created_missions_data) + len(accepted_missions_data)
+            }
+
+            response = ApiResponse(
+                success=True,
+                message=f"Missions recuperees: {data['total_created']} creee(s), {data['total_accepted']} acceptee(s)",
+                data=data
+            )
+            return jsonify(response.to_dict()), 200
+
+        except Exception as e:
+            response = ApiResponse(success=False, message=f"Erreur serveur: {str(e)}")
+            return jsonify(response.to_dict()), 500
 
     @alias_bp.route("/<mission_id>", methods=["GET"])
     @optional_token

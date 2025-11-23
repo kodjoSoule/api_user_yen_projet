@@ -190,9 +190,10 @@ class MissionDisplayDto:
     publisher_id: str
     status: str
     work_days: List[WorkDayDto]
+    worker_id: Optional[str] = None
 
     def to_dict(self):
-        return {
+        result = {
             "id": self.id,
             "title": self.title,
             "description": self.description,
@@ -203,6 +204,9 @@ class MissionDisplayDto:
             "status": self.status,
             "work_days": [wd.to_dict() for wd in self.work_days]
         }
+        if self.worker_id:
+            result["worker_id"] = self.worker_id
+        return result
 
     @staticmethod
     def from_model(model) -> 'MissionDisplayDto':
